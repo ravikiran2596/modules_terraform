@@ -131,6 +131,7 @@ data "aws_subnet" "WEB12" {
 }
 
 resource "aws_instance" "ravi123" {
+  for_each = var.aws_ec2
   ami                         = local.ami_id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
@@ -138,9 +139,8 @@ resource "aws_instance" "ravi123" {
   vpc_security_group_ids      = [aws_security_group.Sgroup.id]
   key_name                    = "DELL8.rsa"
   tags = {
-    Name = "ravi123"
+    Name = "${each.value.Name}"
   }
-
   depends_on = [
     aws_security_group.Sgroup
   ]
