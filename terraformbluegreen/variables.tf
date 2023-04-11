@@ -10,24 +10,29 @@ variable "vpc_id" {
   description = "vpc id for default use"
 }
 
-variable "my_subnet" {
+
+
+variable "my_information" {
   type = map(object({
-    Name              = string
+    subnet_Name       = string
+    instance_Name     = string
     instance_type     = string
     cidr_block        = string
     availability_zone = string
   }))
   default = {
     "subnet1" = {
-      Name              = "BLUE"
-      availability_zone = "ap-northeast-1a"
+      subnet_Name       = "SUB1"
+      instance_Name     = "BLUE"
       instance_type     = "t2.micro"
+      availability_zone = "ap-northeast-1a"
       cidr_block        = "10.120.0.0/24"
     }
     "subnet2" = {
-      Name              = "GREEN"
-      availability_zone = "ap-northeast-1c"
+      subnet_Name       = "SUB2"
+      instance_Name     = "GREEN"
       instance_type     = "t2.micro"
+      availability_zone = "ap-northeast-1c"
       cidr_block        = "10.120.1.0/24"
     }
   }

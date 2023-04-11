@@ -5,3 +5,4 @@ locals {
   ssh_port  = 22
   http_port = 80
 }
+
